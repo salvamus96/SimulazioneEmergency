@@ -72,6 +72,7 @@ public class Simulatore {
 	}
 
 	private void processEvent(Event e) {
+		
 		switch (e.getTipo()) {
 		case ARRIVA:
 			Event e2 = new Event(e.getOra().plusMinutes(DURATION_TRIAGE), EventType.TRIAGE, e.getPaziente());
