@@ -5,8 +5,8 @@ public class TestSimulatore {
 	public static void main(String[] args) {
 		Simulatore sim = new Simulatore() ;
 		
-		sim.setNP(200);
-		sim.setT_ARRIVAL(5);
+		sim.setNP(250);
+		sim.setT_ARRIVAL(3);
 		sim.setNS(3);
 		sim.init(); 
 		

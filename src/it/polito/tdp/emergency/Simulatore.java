@@ -102,7 +102,6 @@ public class Simulatore {
 			break;
 
 		case CHIAMATA:
-			attesa.remove(e.getPaziente());
 			studi_occupati++;
 
 			switch (e.getPaziente().getStato()) {
@@ -128,7 +127,7 @@ public class Simulatore {
 
 			// Decidere chi deve essere chiamato (sulla base di colore e ora di arrivo)
 			// tra i pazienti attesa
-			Paziente paz = attesa.peek();
+			Paziente paz = attesa.poll();
 			if (paz != null) {
 				// Schedulare per ADESSO la CHIAMATA del paziente
 				queue.add(new Event(e.getOra(), EventType.CHIAMATA, paz));
@@ -165,7 +164,7 @@ public class Simulatore {
 
 		case POLLING:
 			if(studi_occupati<NS && !attesa.isEmpty()) {
-				Paziente paz2 = attesa.peek();
+				Paziente paz2 = attesa.poll();
 				queue.add(new Event(e.getOra(), EventType.CHIAMATA, paz2));
 			}
 			queue.add(new Event(e.getOra().plusMinutes(T_POLLING),
